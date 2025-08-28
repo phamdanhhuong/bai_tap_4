@@ -87,13 +87,17 @@ const LoginPage = () => {
                 Login
               </Button>
             </Form.Item>
+
+            <Form.Item style={{ textAlign: "center", marginBottom: 0 }}>
+              <Link to={"/forgot-password"}>Quên mật khẩu?</Link>
+            </Form.Item>
           </Form>
           <Link to={"/"}>
             <ArrowLeftOutlined /> Quay lại trang chủ
           </Link>
           <Divider />
           <div style={{ textAlign: "center" }}>
-            Chưa có tài khoản? <Link to={"/register"}>Đăng ký tài đây</Link>
+            Chưa có tài khoản? <Link to={"/register"}>Đăng ký tại đây</Link>
           </div>
         </fieldset>
       </Col>

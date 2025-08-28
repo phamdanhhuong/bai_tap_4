@@ -7,6 +7,8 @@ import { HomePage } from "./pages/home.tsx";
 import UserPage from "./pages/user.tsx";
 import RegisterPage from "./pages/register.tsx";
 import LoginPage from "./pages/login.tsx";
+import ForgotPasswordPage from "./pages/forgot-password.tsx";
+import ResetPasswordPage from "./pages/reset-password.tsx";
 import { AuthWrapper } from "./components/context/auth.context.tsx";
 
 const router = createBrowserRouter([
@@ -31,6 +33,14 @@ const router = createBrowserRouter([
   {
     path: "login",
     element: <LoginPage />,
+  },
+  {
+    path: "forgot-password",
+    element: <ForgotPasswordPage />,
+  },
+  {
+    path: "reset-password",
+    element: <ResetPasswordPage />,
   },
 ]);
 

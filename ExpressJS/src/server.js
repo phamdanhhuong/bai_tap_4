@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express"); //commonjs
 const configViewEngine = require("./config/viewEngine");
 const apiRoutes = require("./routes/api");
-const connectDB = require("./config/database");
+const { connection } = require("./config/database");
 const { getHomepage } = require("./controllers/homeController");
 const cors = require("cors");
 
@@ -26,8 +26,10 @@ app.use("/api/v1/", apiRoutes);
 
 (async () => {
   try {
-    //kết nối database using mongoose
-    await connectDB();
+    //kết nối database (MongoDB hoặc MySQL tùy thuộc vào DB_TYPE)
+    await connection();
+    console.log(`Using database: ${process.env.DB_TYPE || "mongodb"}`);
+
     //lắng nghe port trong env
     app.listen(port, () => {
       console.log(`Backend Nodejs App listening on port ${port}`);
