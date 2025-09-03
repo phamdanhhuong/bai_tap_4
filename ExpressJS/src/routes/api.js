@@ -7,6 +7,7 @@ const {
   getUser,
   getAccount,
 } = require("../controllers/userController");
+const { getProducts } = require("../controllers/productController");
 const auth = require("../middlewares/auth");
 const { delay } = require("../middlewares/delay");
 
@@ -41,5 +42,8 @@ routerAPI.post("/reset-password", handleResetPassword);
 // API user
 routerAPI.get("/user", getUser);
 routerAPI.get("/account", delay, getAccount);
+
+// Lấy danh sách sản phẩm phân trang
+routerAPI.get("/products", getProducts);
 
 module.exports = routerAPI; //export default

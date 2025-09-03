@@ -41,10 +41,16 @@ const resetPasswordApi = (token: string, newPassword: string) => {
   return axios.post(URL_API, data);
 };
 
+const getProductPage = (page: number, limit: number) => {
+  const URL_API = `/api/v1/products?page=${page}&limit=${limit}`;
+  return axios.get(URL_API);
+};
+
 export {
   createUserApi,
   loginApi,
   getUserApi,
   forgotPasswordApi,
   resetPasswordApi,
+  getProductPage,
 };
