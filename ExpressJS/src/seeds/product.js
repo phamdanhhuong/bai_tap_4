@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const MongoProduct = require("../models/product"); // import từ file bạn đã viết schema
-
+//node .\ExpressJS\src\seeds\product.js
 async function seedProducts() {
   try {
     await mongoose.connect("mongodb://admin:123456@localhost:27017");

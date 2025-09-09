@@ -7,7 +7,10 @@ const {
   getUser,
   getAccount,
 } = require("../controllers/userController");
-const { getProducts } = require("../controllers/productController");
+const {
+  getProducts,
+  searchProducts,
+} = require("../controllers/productController");
 const auth = require("../middlewares/auth");
 const { delay } = require("../middlewares/delay");
 
@@ -45,5 +48,8 @@ routerAPI.get("/account", delay, getAccount);
 
 // Lấy danh sách sản phẩm phân trang
 routerAPI.get("/products", getProducts);
+
+// Tìm kiếm sản phẩm bằng Elasticsearch fuzzy search và lọc nhiều điều kiện
+routerAPI.get("/products/search", searchProducts);
 
 module.exports = routerAPI; //export default

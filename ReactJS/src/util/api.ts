@@ -1,5 +1,22 @@
 import axios from "./axios.customize";
 
+// Tìm kiếm sản phẩm với bộ lọc
+const searchProductApi = (
+  keyword: string,
+  category: string,
+  minPrice: number,
+  maxPrice: number,
+  page: number,
+  limit: number
+) => {
+  const URL_API = `/api/v1/products/search?keyword=${encodeURIComponent(
+    keyword
+  )}&category=${encodeURIComponent(
+    category
+  )}&minPrice=${minPrice}&maxPrice=${maxPrice}&page=${page}&limit=${limit}`;
+  return axios.get(URL_API);
+};
+
 const createUserApi = (name: string, email: string, password: string) => {
   const URL_API = "/api/v1/register";
   const data = {
@@ -53,4 +70,5 @@ export {
   forgotPasswordApi,
   resetPasswordApi,
   getProductPage,
+  searchProductApi,
 };
