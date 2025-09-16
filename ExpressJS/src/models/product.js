@@ -7,6 +7,9 @@ const mongoProductSchema = new mongoose.Schema(
     description: String,
     category: String,
     inStock: { type: Boolean, default: true },
+    viewCount: { type: Number, default: 0 },
+    purchaseCount: { type: Number, default: 0 },
+    commentCount: { type: Number, default: 0 },
   },
   {
     timestamps: true,

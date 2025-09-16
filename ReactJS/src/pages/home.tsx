@@ -1,12 +1,14 @@
-import { CrownOutlined } from "@ant-design/icons";
-import { Result, List, Spin } from "antd";
+import { CrownOutlined, EyeOutlined } from "@ant-design/icons";
+import { Result, List, Spin, Button } from "antd";
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { searchProductApi } from "../util/api";
 
 const PAGE_SIZE = 10;
 const CATEGORY_OPTIONS = ["Laptop", "Điện thoại", "Phụ kiện", "Thời trang"];
 
 const HomePage = () => {
+  const navigate = useNavigate();
   const [products, setProducts] = useState<any[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -135,8 +137,24 @@ const HomePage = () => {
             return (
               <List.Item>
                 <div style={{ width: "100%" }}>
-                  <div style={{ fontWeight: "bold", fontSize: 16 }}>
-                    {item.name}
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "flex-start",
+                      marginBottom: "8px",
+                    }}
+                  >
+                    <div style={{ fontWeight: "bold", fontSize: 16 }}>
+                      {item.name}
+                    </div>
+                    <Button
+                      type="primary"
+                      icon={<EyeOutlined />}
+                      onClick={() => navigate(`/product/${item._id}`)}
+                    >
+                      Xem chi tiết
+                    </Button>
                   </div>
                   <div>
                     Giá:{" "}
@@ -152,6 +170,21 @@ const HomePage = () => {
                       {item.inStock ? "Còn hàng" : "Hết hàng"}
                     </span>
                   </div>
+                  {(item.viewCount ||
+                    item.purchaseCount ||
+                    item.commentCount) && (
+                    <div
+                      style={{
+                        marginTop: "8px",
+                        fontSize: "12px",
+                        color: "#666",
+                      }}
+                    >
+                      {item.viewCount && `${item.viewCount} lượt xem • `}
+                      {item.purchaseCount && `${item.purchaseCount} đã mua • `}
+                      {item.commentCount && `${item.commentCount} bình luận`}
+                    </div>
+                  )}
                 </div>
               </List.Item>
             );

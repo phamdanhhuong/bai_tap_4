@@ -9,6 +9,7 @@ import RegisterPage from "./pages/register.tsx";
 import LoginPage from "./pages/login.tsx";
 import ForgotPasswordPage from "./pages/forgot-password.tsx";
 import ResetPasswordPage from "./pages/reset-password.tsx";
+import { ProductDetailPage } from "./pages/product-detail.tsx";
 import { AuthWrapper } from "./components/context/auth.context.tsx";
 
 const router = createBrowserRouter([
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "user",
         element: <UserPage />,
+      },
+      {
+        path: "product/:productId",
+        element: <ProductDetailPage />,
       },
     ],
   },
